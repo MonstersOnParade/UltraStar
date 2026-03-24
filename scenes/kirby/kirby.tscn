@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://brbk8oap2y8gj"]
 
 [ext_resource type="Texture2D" uid="uid://bfyfciqj4bex0" path="res://assets/sprites/kirbytransparent.png" id="1_i32sr"]
+[ext_resource type="Script" uid="uid://cim40nhcjver5" path="res://scripts/kirby/kirby.gd" id="1_k68gd"]
+[ext_resource type="Script" uid="uid://ptyeyw3f3qau" path="res://scripts/components/input_component.gd" id="3_5hgti"]
+[ext_resource type="Script" uid="uid://cvp5jks3dl43o" path="res://scripts/components/movement_component.gd" id="4_mpsvd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i32sr"]
 atlas = ExtResource("1_i32sr")
@@ -108,6 +111,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"Dance",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Sleepy",
 "speed": 5.0
 }, {
 "frames": [{
@@ -143,16 +151,16 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 20.0,
 "texture": SubResource("AtlasTexture_k68gd")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5hgti")
 }, {
-"duration": 1.0,
+"duration": 4.0,
 "texture": SubResource("AtlasTexture_mpsvd")
 }, {
 "duration": 1.0,
@@ -160,21 +168,38 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i32sr"]
 
 [node name="Kirby" type="CharacterBody2D" unique_id=1583559814]
+editor_description = "Kirby!"
+script = ExtResource("1_k68gd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1146340805]
+z_index = 5
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6qy7c")
 animation = &"Walk"
-frame_progress = 0.6969105
+frame_progress = 0.40366322
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=220413021]
+z_index = 10
 shape = SubResource("RectangleShape2D_i32sr")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1720718260]
 zoom = Vector2(3, 3)
+
+[node name="InputComponent" type="Node" parent="." unique_id=363702056]
+unique_name_in_owner = true
+script = ExtResource("3_5hgti")
+metadata/_custom_type_script = "uid://ptyeyw3f3qau"
+
+[node name="MovementComponent" type="Node" parent="." unique_id=1088748168 node_paths=PackedStringArray("characterBody")]
+unique_name_in_owner = true
+script = ExtResource("4_mpsvd")
+characterBody = NodePath("..")
+canJump = true
+canFloat = true
+metadata/_custom_type_script = "uid://cvp5jks3dl43o"
