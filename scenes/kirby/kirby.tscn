@@ -3,7 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bfyfciqj4bex0" path="res://assets/sprites/kirbytransparent.png" id="1_i32sr"]
 [ext_resource type="Script" uid="uid://cim40nhcjver5" path="res://scripts/kirby/kirby.gd" id="1_k68gd"]
 [ext_resource type="Script" uid="uid://ptyeyw3f3qau" path="res://scripts/components/input_component.gd" id="3_5hgti"]
+[ext_resource type="Texture2D" uid="uid://j212xclcamtm" path="res://assets/sprites/Special Kirbys Transparent.png" id="3_6qy7c"]
 [ext_resource type="Script" uid="uid://cvp5jks3dl43o" path="res://scripts/components/movement_component.gd" id="4_mpsvd"]
+[ext_resource type="Script" uid="uid://brc6s7xnkqtov" path="res://scripts/components/animation_component.gd" id="6_4f5ep"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i32sr"]
 atlas = ExtResource("1_i32sr")
@@ -32,6 +34,38 @@ region = Rect2(310, 58, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tai8n"]
 atlas = ExtResource("1_i32sr")
 region = Rect2(339, 58, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7b1r"]
+atlas = ExtResource("3_6qy7c")
+region = Rect2(2, 580, 28, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpseg"]
+atlas = ExtResource("3_6qy7c")
+region = Rect2(35, 580, 28, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vficc"]
+atlas = ExtResource("3_6qy7c")
+region = Rect2(68, 580, 28, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24860"]
+atlas = ExtResource("3_6qy7c")
+region = Rect2(100, 580, 29, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvyfm"]
+atlas = ExtResource("3_6qy7c")
+region = Rect2(133, 580, 30, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20cdt"]
+atlas = ExtResource("3_6qy7c")
+region = Rect2(166, 580, 31, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0y53"]
+atlas = ExtResource("3_6qy7c")
+region = Rect2(199, 580, 31, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmduf"]
+atlas = ExtResource("3_6qy7c")
+region = Rect2(232, 580, 32, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kjk6k"]
 atlas = ExtResource("1_i32sr")
@@ -113,10 +147,45 @@ animations = [{
 "name": &"Dance",
 "speed": 10.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_g7b1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpseg")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_vficc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24860")
+}],
 "loop": true,
-"name": &"Sleepy",
-"speed": 5.0
+"name": &"Going to Sleep",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvyfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20cdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0y53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmduf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0y53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20cdt")
+}],
+"loop": true,
+"name": &"Sleeping",
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -171,7 +240,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i32sr"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4f5ep"]
 
 [node name="Kirby" type="CharacterBody2D" unique_id=1583559814]
 editor_description = "Kirby!"
@@ -181,12 +250,11 @@ script = ExtResource("1_k68gd")
 z_index = 5
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6qy7c")
-animation = &"Walk"
-frame_progress = 0.40366322
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=220413021]
 z_index = 10
-shape = SubResource("RectangleShape2D_i32sr")
+shape = SubResource("CircleShape2D_4f5ep")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1720718260]
 zoom = Vector2(3, 3)
@@ -203,3 +271,9 @@ characterBody = NodePath("..")
 canJump = true
 canFloat = true
 metadata/_custom_type_script = "uid://cvp5jks3dl43o"
+
+[node name="AnimationComponent" type="Node" parent="." unique_id=1873295082 node_paths=PackedStringArray("AnimatedSprite")]
+unique_name_in_owner = true
+script = ExtResource("6_4f5ep")
+AnimatedSprite = NodePath("../AnimatedSprite2D")
+metadata/_custom_type_script = "uid://brc6s7xnkqtov"

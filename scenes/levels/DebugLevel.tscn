@@ -27,6 +27,7 @@ texture_region_size = Vector2i(24, 24)
 4:4/0 = 0
 4:5/0 = 0
 0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
 0:1/0 = 0
 0:0/0 = 0
 5:5/0 = 0
@@ -53,11 +54,15 @@ texture_region_size = Vector2i(24, 24)
 4:0/0 = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.712372, -12, 12, 8.273502, 8.813078, 12, -12, -7.733925)
 5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, 9.169363, 6.1893196, -0.1146183, 12, 0, 12, 2.808117, 10.028992, 3.782362, -6.017395, 12, -12, 12)
 5:1/0 = 0
 6:1/0 = 0
 6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -3.0946598, 6.1893196, -12, 12, -12, 12, -9.112055, -6.1320114, 0, -12, -0.1146183)
 7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(12, -2.865427, 12, 0.057308197, 6.1320114, 0, -12, -9.054745, -12, -12, -6.074703, -12)
 8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(12, 9.226671, 12, 12, 6.246628, 12, -12, 2.808117, -12, 0.057308197, -6.361248, 0.057308197)
 8:1/0 = 0
 7:1/0 = 0
 7:2/0 = 0
@@ -221,7 +226,7 @@ sources/2 = SubResource("TileSetAtlasSource_2ba50")
 [node name="DebugLevel" type="Node2D" unique_id=1624536227]
 
 [node name="Kirby" parent="." unique_id=1828536400 instance=ExtResource("1_x8kn8")]
-position = Vector2(-12, 37)
+position = Vector2(-12, -65)
 
 [node name="TileMapLayers" type="Node2D" parent="." unique_id=254693309]
 texture_filter = 1
