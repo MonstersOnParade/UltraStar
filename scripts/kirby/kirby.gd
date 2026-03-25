@@ -4,7 +4,8 @@ class_name Kirby extends CharacterBody2D
 @onready var movement_component: MovementComponent = %MovementComponent
 @onready var animation_component: AnimationComponent = %AnimationComponent
 
-
+func _ready() -> void:
+	animation_component.AnimatedSprite.play()
 
 func _physics_process(delta: float) -> void:
 	#handles controls
@@ -19,6 +20,15 @@ func _physics_process(delta: float) -> void:
 		animation_component.flipSprite(true)
 	elif input_component.move_horizontal_axis > 0.1:
 		animation_component.flipSprite(false)
-		
 	
-	pass
+	determine_animation()
+
+#This will need to be improved later
+func determine_animation() -> void:
+	if abs(movement_component.velocity.x) > 0:
+		if movement_component.isSprinting:
+			animation_component.AnimatedSprite.play("Walk")
+		else:
+			animation_component.AnimatedSprite.play("Walk")
+	else:
+		animation_component.AnimatedSprite.play("Idle")

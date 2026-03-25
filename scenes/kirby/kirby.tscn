@@ -51,6 +51,18 @@ region = Rect2(68, 580, 28, 26)
 atlas = ExtResource("3_6qy7c")
 region = Rect2(100, 580, 29, 26)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_k68gd"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(232, 89, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hgti"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(261, 89, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpsvd"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(290, 89, 25, 25)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvyfm"]
 atlas = ExtResource("3_6qy7c")
 region = Rect2(133, 580, 30, 26)
@@ -107,18 +119,6 @@ region = Rect2(176, 197, 23, 24)
 atlas = ExtResource("1_i32sr")
 region = Rect2(204, 197, 23, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k68gd"]
-atlas = ExtResource("1_i32sr")
-region = Rect2(232, 89, 25, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5hgti"]
-atlas = ExtResource("1_i32sr")
-region = Rect2(261, 89, 25, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mpsvd"]
-atlas = ExtResource("1_i32sr")
-region = Rect2(290, 89, 25, 25)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_6qy7c"]
 animations = [{
 "frames": [{
@@ -163,6 +163,23 @@ animations = [{
 "loop": true,
 "name": &"Going to Sleep",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_k68gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hgti")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_mpsvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hgti")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -221,23 +238,6 @@ animations = [{
 "loop": true,
 "name": &"Walk",
 "speed": 10.0
-}, {
-"frames": [{
-"duration": 20.0,
-"texture": SubResource("AtlasTexture_k68gd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5hgti")
-}, {
-"duration": 4.0,
-"texture": SubResource("AtlasTexture_mpsvd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5hgti")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4f5ep"]
@@ -250,7 +250,7 @@ script = ExtResource("1_k68gd")
 z_index = 5
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6qy7c")
-animation = &"idle"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=220413021]
 z_index = 10

@@ -8,17 +8,18 @@ class_name MovementComponent extends Node
 @export var walk_acceleration: float = 24000
 @export var sprint_accelerations: float = 36000
 @export var friction: float = 30000.0
-@export var gravity: float = 9800
+@export var gravity: float = 10000
+@export var instantMaxSpeed: bool =false
 #Only Kirby,Helpers and some AI can jump. Most AI can't jump, thus false by default
 @export var canJump: bool = false
 #Only Kirby and parasol/helpers enemies can float.  Most AI can't float, thus false by default
 @export var canFloat: bool = false
 
 #This really only matters if the character can jump, like Kirby or the helpers. But some AI can too
-@export var jump_force: float = -5000
+@export var jump_force: float = -6000
 @export var coyote_time: float = 0.1
 @export var jump_buffer: float = 0.1
-@export var jump_length: float = 0.3
+@export var jump_length: float = 0.5
 @export var is_helper: bool = false
 
 #Used for calculating various jump related timings
@@ -76,7 +77,9 @@ func tick(delta:float) -> void:
 		coyote_timer = coyote_time
 	
 	characterBody.velocity = velocity * delta
+	#characterBody.apply_floor_snap()
 	characterBody.move_and_slide()
+	
 
 
 #checks if a jump can be performed
@@ -107,8 +110,18 @@ func update_timers(delta:float) -> void:
 func move_horizontal(input_direction: float, delta: float) -> void:
 	if input_direction != 0:
 		if isSprinting:
-			velocity.x = move_toward(velocity.x, input_direction * max_sprinting_speed, sprint_accelerations * delta)
+			if instantMaxSpeed:
+				velocity.x = input_direction * max_sprinting_speed
+			else:
+				velocity.x = move_toward(velocity.x, input_direction * max_sprinting_speed, sprint_accelerations * delta)
 		else:
-			velocity.x = move_toward(velocity.x, input_direction * max_walking_speed, walk_acceleration * delta)
+			if instantMaxSpeed:
+				velocity.x = input_direction * max_walking_speed
+			else:
+				velocity.x = move_toward(velocity.x, input_direction * max_walking_speed, walk_acceleration * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
+
+#Applies a force vector, for example knockback
+func add_force(force:Vector2) -> void:
+	velocity += force

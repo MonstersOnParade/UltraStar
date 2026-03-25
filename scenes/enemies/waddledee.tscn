@@ -1,3 +1,93 @@
 [gd_scene format=3 uid="uid://dwq8vo3clptor"]
 
-[node name="Waddledee" type="Node2D" unique_id=1856185785]
+[ext_resource type="Texture2D" uid="uid://b37hjwpxvq71e" path="res://assets/sprites/ability enemies transparent.png" id="1_dkd1n"]
+[ext_resource type="Script" uid="uid://b2lxuxga7qvhn" path="res://scripts/enemies/waddledee.gd" id="1_jy1bu"]
+[ext_resource type="Script" uid="uid://cvp5jks3dl43o" path="res://scripts/components/movement_component.gd" id="3_80ny3"]
+[ext_resource type="Script" uid="uid://brc6s7xnkqtov" path="res://scripts/components/animation_component.gd" id="4_jlnj3"]
+[ext_resource type="Script" uid="uid://bndixi3w6qv4k" path="res://scripts/components/patrol_component.gd" id="5_rf624"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jy1bu"]
+atlas = ExtResource("1_dkd1n")
+region = Rect2(197, 8, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtebi"]
+atlas = ExtResource("1_dkd1n")
+region = Rect2(235, 10, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv7if"]
+atlas = ExtResource("1_dkd1n")
+region = Rect2(276, 10, 23, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80ny3"]
+atlas = ExtResource("1_dkd1n")
+region = Rect2(317, 12, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlnj3"]
+atlas = ExtResource("1_dkd1n")
+region = Rect2(356, 9, 27, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rf624"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jy1bu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtebi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv7if")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80ny3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlnj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80ny3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv7if")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtebi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dkd1n"]
+
+[node name="Waddledee" type="CharacterBody2D" unique_id=1848298276]
+script = ExtResource("1_jy1bu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1065437244]
+z_index = 5
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_rf624")
+frame_progress = 0.25276056
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=238754103]
+shape = SubResource("CircleShape2D_dkd1n")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=1569262576 node_paths=PackedStringArray("characterBody")]
+unique_name_in_owner = true
+script = ExtResource("3_80ny3")
+characterBody = NodePath("..")
+instantMaxSpeed = true
+metadata/_custom_type_script = "uid://cvp5jks3dl43o"
+
+[node name="AnimationComponent" type="Node" parent="." unique_id=1917405949 node_paths=PackedStringArray("AnimatedSprite")]
+unique_name_in_owner = true
+script = ExtResource("4_jlnj3")
+AnimatedSprite = NodePath("../AnimatedSprite2D")
+metadata/_custom_type_script = "uid://brc6s7xnkqtov"
+
+[node name="PatrolComponent" type="Node" parent="." unique_id=1634701229 node_paths=PackedStringArray("characterBody")]
+unique_name_in_owner = true
+script = ExtResource("5_rf624")
+characterBody = NodePath("..")
+patrol_range = 50.0
+metadata/_custom_type_script = "uid://bndixi3w6qv4k"
