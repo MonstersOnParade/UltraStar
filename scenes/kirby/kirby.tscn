@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://j212xclcamtm" path="res://assets/sprites/Special Kirbys Transparent.png" id="3_6qy7c"]
 [ext_resource type="Script" uid="uid://cvp5jks3dl43o" path="res://scripts/components/movement_component.gd" id="4_mpsvd"]
 [ext_resource type="Script" uid="uid://brc6s7xnkqtov" path="res://scripts/components/animation_component.gd" id="6_4f5ep"]
+[ext_resource type="Script" uid="uid://dyfxdx1q3k26t" path="res://scripts/components/health_component.gd" id="7_vaffm"]
+[ext_resource type="Script" uid="uid://ck7myqkx3wegi" path="res://scripts/components/inhale_component.gd" id="8_sb2d6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i32sr"]
 atlas = ExtResource("1_i32sr")
@@ -277,3 +279,13 @@ unique_name_in_owner = true
 script = ExtResource("6_4f5ep")
 AnimatedSprite = NodePath("../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://brc6s7xnkqtov"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=359917293]
+unique_name_in_owner = true
+script = ExtResource("7_vaffm")
+metadata/_custom_type_script = "uid://dyfxdx1q3k26t"
+
+[node name="InhaleComponent" type="Node" parent="." unique_id=1223728327]
+unique_name_in_owner = true
+script = ExtResource("8_sb2d6")
+metadata/_custom_type_script = "uid://ck7myqkx3wegi"

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cvp5jks3dl43o" path="res://scripts/components/movement_component.gd" id="3_80ny3"]
 [ext_resource type="Script" uid="uid://brc6s7xnkqtov" path="res://scripts/components/animation_component.gd" id="4_jlnj3"]
 [ext_resource type="Script" uid="uid://bndixi3w6qv4k" path="res://scripts/components/patrol_component.gd" id="5_rf624"]
+[ext_resource type="Script" uid="uid://dyfxdx1q3k26t" path="res://scripts/components/health_component.gd" id="6_jlnj3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jy1bu"]
 atlas = ExtResource("1_dkd1n")
@@ -91,3 +92,9 @@ script = ExtResource("5_rf624")
 characterBody = NodePath("..")
 patrol_range = 50.0
 metadata/_custom_type_script = "uid://bndixi3w6qv4k"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1760730509]
+unique_name_in_owner = true
+script = ExtResource("6_jlnj3")
+max_health = 2
+metadata/_custom_type_script = "uid://dyfxdx1q3k26t"

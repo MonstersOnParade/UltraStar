@@ -3,6 +3,7 @@ class_name Kirby extends CharacterBody2D
 @onready var input_component: InputComponent = %InputComponent
 @onready var movement_component: MovementComponent = %MovementComponent
 @onready var animation_component: AnimationComponent = %AnimationComponent
+@onready var health_component: HealthComponent = %HealthComponent
 
 func _ready() -> void:
 	animation_component.AnimatedSprite.play()
