@@ -81,6 +81,26 @@ region = Rect2(394, 305, 24, 25)
 atlas = ExtResource("1_i32sr")
 region = Rect2(167, 426, 30, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1k60"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(202, 426, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cta5c"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(237, 426, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucjrn"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(272, 427, 30, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oktuq"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(306, 427, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0llo"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(342, 427, 33, 31)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7b1r"]
 atlas = ExtResource("3_6qy7c")
 region = Rect2(2, 580, 28, 26)
@@ -274,7 +294,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Fall",
-"speed": 12.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -283,6 +303,38 @@ animations = [{
 "loop": true,
 "name": &"Float",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xnpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1k60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cta5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucjrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oktuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0llo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oktuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucjrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cta5c")
+}],
+"loop": true,
+"name": &"Float Flap",
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 4.0,
@@ -353,7 +405,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Run",
-"speed": 14.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -424,7 +476,8 @@ script = ExtResource("1_k68gd")
 z_index = 5
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6qy7c")
-animation = &"Idle"
+animation = &"Float Flap"
+frame_progress = 0.9766
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=220413021]
 z_index = 10

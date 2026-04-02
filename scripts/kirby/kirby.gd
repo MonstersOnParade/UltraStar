@@ -5,6 +5,9 @@ class_name Kirby extends CharacterBody2D
 @onready var animation_component: AnimationComponent = %AnimationComponent
 @onready var health_component: HealthComponent = %HealthComponent
 
+@export_enum("Normal", "Fire", "Ice", "Plasma", "Beam", "Mirror", "UFO", "Sword", "Cutter", "YoYo", "Mic", "Copy", "Laser", "Bomb", "Stone", "Jet", "Flight", "Fighter", "Sumo", "Sleep", "Crash") var AbilityType:int
+
+
 func _ready() -> void:
 	animation_component.AnimatedSprite.play()
 
@@ -42,3 +45,9 @@ func determine_animation() -> void:
 	
 	if movement_component.velocity.y > 0 and not movement_component.is_floating and not is_on_floor():
 		animation_component.AnimatedSprite.play("Fall")
+	
+	if movement_component.velocity.y > 0 and movement_component.is_floating and not is_on_floor():
+		animation_component.AnimatedSprite.play("Float")
+		
+	if movement_component.wants_jump and movement_component.is_floating:
+		animation_component.AnimatedSprite.play("Float Flap")

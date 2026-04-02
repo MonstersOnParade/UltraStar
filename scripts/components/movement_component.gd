@@ -9,6 +9,7 @@ class_name MovementComponent extends Node
 @export var sprint_accelerations: float = 36000
 @export var friction: float = 30000.0
 @export var gravity: float = 10000
+@export var float_gravity: float = 5000
 
 #probably only useful for debug
 @export var instantMaxSpeed: bool =false
@@ -34,7 +35,7 @@ var jumping_timer: float = 0.0
 
 
 #float related
-@export var float_force: float = 3.0
+@export var float_force: float = -3500.0
 @export var max_float_time: float = 2.0
 @export var float_regen_rate: float = 1.0
 
@@ -58,24 +59,16 @@ func tick(delta:float) -> void:
 	
 	if wants_sprint:
 		try_sprint(delta)
+	
 	#apply gravity 
-	if not characterBody.is_on_floor():
-		if not is_floating:
-			if is_holding_jump:
-				#does not apply gravity if the jump button is held and the timer is not yet below 0
-				if jumping_timer > 0:
-					jumping_timer -= delta
-				else:
-					velocity.y += delta * gravity
-			else:
-				jumping_timer = 0
-				velocity.y += delta * gravity
+	apply_gravity(delta)
 	
 	if wants_jump:
 		try_jump(delta)
 	
 	if characterBody.is_on_floor():
 		coyote_timer = coyote_time
+		is_floating = false
 	
 	characterBody.velocity = velocity * delta
 	#characterBody.apply_floor_snap()
@@ -89,6 +82,21 @@ func update_timers(delta:float) -> void:
 		jump_buffer_timer -= delta
 	if sprint_timer >= 0:
 		sprint_timer -= delta
+
+func apply_gravity(delta: float) -> void:
+	if not characterBody.is_on_floor():
+		if is_floating:
+			velocity.y += delta * float_gravity
+		elif not is_floating:
+			if is_holding_jump:
+				#does not apply gravity if the jump button is held and the timer is not yet below 0
+				if jumping_timer > 0:
+					jumping_timer -= delta
+				else:
+					velocity.y += delta * gravity
+			else:
+				jumping_timer = 0
+				velocity.y += delta * gravity
 
 func try_sprint(delta: float) -> void:
 	if can_sprint():
@@ -116,6 +124,8 @@ func try_jump(delta:float) -> void:
 		#this is actually checking if we currently can jump
 		if can_jump():
 			perform_jump(delta)
+		elif not characterBody.is_on_floor():
+			perform_float(delta)
 
 #checks if a jump can be performed
 func can_jump() -> bool:
@@ -128,6 +138,10 @@ func can_jump() -> bool:
 func perform_jump(delta:float) -> void:
 	velocity.y = jump_force
 	jumping_timer = jump_length
+
+func perform_float(delta:float) -> void:
+	is_floating = true
+	velocity.y = float_force
 
 #moves the character based on provided input direction
 func move_horizontal(input_direction: float, delta: float) -> void:

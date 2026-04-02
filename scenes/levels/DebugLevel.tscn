@@ -46,6 +46,7 @@ texture_region_size = Vector2i(24, 24)
 2:1/0 = 0
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, -7.913783, -12, -8.2735)
+1:0/0/physics_layer_0/polygon_0/one_way = true
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(10.863232, -12, 10.761707, -8.731197, -10.558658, -9.4418745, -10.761707, -12)
 3:0/0 = 0
@@ -116,6 +117,7 @@ texture_region_size = Vector2i(24, 24)
 19:4/0 = 0
 18:4/0 = 0
 18:3/0 = 0
+18:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -6.7624054, 3.151966, -12, 12, -12, 12, -9.112055, -3.2665863, -4.126214, -12, -4.0115967)
 18:2/0 = 0
 17:2/0 = 0
 17:3/0 = 0
@@ -227,7 +229,7 @@ sources/2 = SubResource("TileSetAtlasSource_2ba50")
 [node name="DebugLevel" type="Node2D" unique_id=1624536227]
 
 [node name="Kirby" parent="." unique_id=1828536400 instance=ExtResource("1_x8kn8")]
-position = Vector2(144, -180)
+position = Vector2(141, -178)
 
 [node name="Waddledee" parent="." unique_id=1848298276 instance=ExtResource("3_aqnxt")]
 position = Vector2(29, -182)
