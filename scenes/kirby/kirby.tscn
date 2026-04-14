@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://brc6s7xnkqtov" path="res://scripts/components/animation_component.gd" id="6_4f5ep"]
 [ext_resource type="Script" uid="uid://dyfxdx1q3k26t" path="res://scripts/components/health_component.gd" id="7_vaffm"]
 [ext_resource type="Script" uid="uid://ck7myqkx3wegi" path="res://scripts/components/inhale_component.gd" id="8_sb2d6"]
+[ext_resource type="Script" uid="uid://xaylo3tikkot" path="res://scripts/components/state_component.gd" id="9_37ypw"]
+[ext_resource type="Script" uid="uid://c23vir5cya3me" path="res://scripts/components/ability_component.gd" id="10_tai8n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i32sr"]
 atlas = ExtResource("1_i32sr")
@@ -36,6 +38,18 @@ region = Rect2(310, 58, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tai8n"]
 atlas = ExtResource("1_i32sr")
 region = Rect2(339, 58, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8rg4"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(221, 127, 30, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41kmf"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(256, 127, 30, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx3fk"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(291, 127, 30, 13)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0v860"]
 atlas = ExtResource("1_i32sr")
@@ -101,6 +115,46 @@ region = Rect2(306, 427, 31, 31)
 atlas = ExtResource("1_i32sr")
 region = Rect2(342, 427, 33, 31)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilr1l"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(220, 154, 31, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2afq6"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(134, 264, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iigvk"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(169, 266, 29, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_033x4"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(203, 265, 30, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymm35"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(238, 264, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayjbs"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(273, 264, 31, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivmcy"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(309, 264, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd6te"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(344, 265, 30, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg5xo"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(379, 266, 29, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igw1t"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(413, 264, 30, 30)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7b1r"]
 atlas = ExtResource("3_6qy7c")
 region = Rect2(2, 580, 28, 26)
@@ -116,6 +170,10 @@ region = Rect2(68, 580, 28, 26)
 [sub_resource type="AtlasTexture" id="AtlasTexture_24860"]
 atlas = ExtResource("3_6qy7c")
 region = Rect2(100, 580, 29, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1urvg"]
+atlas = ExtResource("1_i32sr")
+region = Rect2(176, 509, 24, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k68gd"]
 atlas = ExtResource("1_i32sr")
@@ -250,6 +308,23 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_v8rg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41kmf")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_yx3fk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41kmf")
+}],
+"loop": true,
+"name": &"Duck",
+"speed": 10.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0v860")
 }, {
@@ -296,6 +371,11 @@ animations = [{
 "name": &"Fall",
 "speed": 16.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"Fire Idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1xnpy")
@@ -337,6 +417,46 @@ animations = [{
 "speed": 14.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilr1l")
+}],
+"loop": true,
+"name": &"Full Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2afq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iigvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_033x4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymm35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayjbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivmcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd6te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg5xo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igw1t")
+}],
+"loop": true,
+"name": &"Full Walk",
+"speed": 10.0
+}, {
+"frames": [{
 "duration": 4.0,
 "texture": SubResource("AtlasTexture_g7b1r")
 }, {
@@ -352,6 +472,14 @@ animations = [{
 "loop": true,
 "name": &"Going to Sleep",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1urvg")
+}],
+"loop": true,
+"name": &"Guard",
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 20.0,
@@ -430,6 +558,11 @@ animations = [{
 "name": &"Sleeping",
 "speed": 4.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"Starting to Inhale",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kjk6k")
@@ -466,25 +599,64 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4f5ep"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_tai8n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ilr1l"]
+radius = 6.0
+height = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2afq6"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjk6k"]
+radius = 13.038404
 
 [node name="Kirby" type="CharacterBody2D" unique_id=1583559814]
 editor_description = "Kirby!"
+floor_max_angle = 1.5707964
+floor_snap_length = 5.0
 script = ExtResource("1_k68gd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1146340805]
-z_index = 5
+z_index = 1
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6qy7c")
-animation = &"Float Flap"
-frame_progress = 0.9766
+animation = &"Full Idle"
+frame_progress = 0.89577675
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=220413021]
+[node name="Normal Collision" type="CollisionShape2D" parent="." unique_id=220413021]
+unique_name_in_owner = true
 z_index = 10
-shape = SubResource("CircleShape2D_4f5ep")
+shape = SubResource("CircleShape2D_tai8n")
+
+[node name="Ducking Collision" type="CollisionShape2D" parent="." unique_id=76121597]
+unique_name_in_owner = true
+z_index = 10
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ilr1l")
+disabled = true
+
+[node name="Full Collision" type="CollisionShape2D" parent="." unique_id=1634911899]
+unique_name_in_owner = true
+z_index = 5
+shape = SubResource("CircleShape2D_2afq6")
+disabled = true
+
+[node name="Full Walk Collision" type="CollisionShape2D" parent="." unique_id=204389975]
+unique_name_in_owner = true
+z_index = 5
+shape = SubResource("CircleShape2D_2afq6")
+disabled = true
+
+[node name="Float Collision" type="CollisionShape2D" parent="." unique_id=1645696827]
+unique_name_in_owner = true
+z_index = 5
+shape = SubResource("CircleShape2D_kjk6k")
+disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1720718260]
 zoom = Vector2(3, 3)
+position_smoothing_speed = 10.0
 
 [node name="InputComponent" type="Node" parent="." unique_id=363702056]
 unique_name_in_owner = true
@@ -514,3 +686,13 @@ metadata/_custom_type_script = "uid://dyfxdx1q3k26t"
 unique_name_in_owner = true
 script = ExtResource("8_sb2d6")
 metadata/_custom_type_script = "uid://ck7myqkx3wegi"
+
+[node name="StateComponent" type="Node" parent="." unique_id=311251478]
+unique_name_in_owner = true
+script = ExtResource("9_37ypw")
+metadata/_custom_type_script = "uid://xaylo3tikkot"
+
+[node name="AbilityComponent" type="Node" parent="." unique_id=957967962]
+unique_name_in_owner = true
+script = ExtResource("10_tai8n")
+metadata/_custom_type_script = "uid://c23vir5cya3me"

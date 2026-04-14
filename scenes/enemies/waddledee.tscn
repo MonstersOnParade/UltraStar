@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://brc6s7xnkqtov" path="res://scripts/components/animation_component.gd" id="4_jlnj3"]
 [ext_resource type="Script" uid="uid://bndixi3w6qv4k" path="res://scripts/components/patrol_component.gd" id="5_rf624"]
 [ext_resource type="Script" uid="uid://dyfxdx1q3k26t" path="res://scripts/components/health_component.gd" id="6_jlnj3"]
+[ext_resource type="Script" uid="uid://xaylo3tikkot" path="res://scripts/components/state_component.gd" id="7_rf624"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jy1bu"]
 atlas = ExtResource("1_dkd1n")
@@ -71,6 +72,7 @@ sprite_frames = SubResource("SpriteFrames_rf624")
 frame_progress = 0.25276056
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=238754103]
+z_index = 10
 shape = SubResource("CircleShape2D_dkd1n")
 
 [node name="MovementComponent" type="Node" parent="." unique_id=1569262576 node_paths=PackedStringArray("characterBody")]
@@ -98,3 +100,8 @@ unique_name_in_owner = true
 script = ExtResource("6_jlnj3")
 max_health = 2
 metadata/_custom_type_script = "uid://dyfxdx1q3k26t"
+
+[node name="StateComponent" type="Node" parent="." unique_id=1780605741]
+unique_name_in_owner = true
+script = ExtResource("7_rf624")
+metadata/_custom_type_script = "uid://xaylo3tikkot"

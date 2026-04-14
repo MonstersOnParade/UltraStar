@@ -6,10 +6,10 @@ class_name InhaleComponent extends Node
 
 var is_inhaling: bool = false
 var inhalable_objects: Array[Node2D]
-#var inhaled_object: Node2D
+var current_inhaled_object: Node2D
 
 func start_inhale() -> void:
-	#don't inhale if we are already inhaling
+	#don't re-inhale if we are already inhaling
 	if is_inhaling:
 		return
 	is_inhaling = true
@@ -19,8 +19,6 @@ func start_inhale() -> void:
 		for inhaled_object: Node2D in inhalable_objects:
 			#We check that the node has this method before we popped it into the results
 			inhaled_object.get_inhaled()
-	if inhalable_objects.size() == 0:
-		stop_inhale()
 
 func stop_inhale() -> void:
 	is_inhaling = false
@@ -35,12 +33,11 @@ func get_inhalable_objects() -> Array:
 				results.append(overlapped_body)
 	return results
 
+func set_inhaled_object(inhaledObject: Node2D) -> void:
+	#Pretty sure this prevent null objects from being set
+	if inhaledObject:
+		current_inhaled_object = inhaledObject
+
 func spit_out() -> void:
-	if inhalable_objects.size() > 0:
-		if inhalable_objects.size() > 1:
-			#combine objects into a single larger star
-			pass
-		else:
-			#spit out the exact thing
-			pass
-	stop_inhale()
+	#Spawn current inhaled object
+	current_inhaled_object = null

@@ -2,12 +2,16 @@ class_name HealthComponent extends Node
 
 @export var max_health: int = 6
 var current_health: int = 6
+var is_guarding:bool = false
 
 signal health_changed(new_health: int)
 signal has_died()
 
 func take_damage(amount: int) ->void:
-	current_health = max(0, current_health - amount)
+	if is_guarding:
+		current_health = max(0, current_health - (amount/2))
+	else:
+		current_health = max(0, current_health - amount)
 	health_changed.emit(current_health)
 	
 	if current_health <= 0:

@@ -23,6 +23,7 @@ texture_region_size = Vector2i(24, 24)
 1:3/0 = 0
 1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, 12, -12, 12)
 2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
 3:3/0 = 0
 4:3/0 = 0
 4:4/0 = 0
@@ -48,7 +49,8 @@ texture_region_size = Vector2i(24, 24)
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, -7.913783, -12, -8.2735)
 1:0/0/physics_layer_0/polygon_0/one_way = true
 2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(10.863232, -12, 10.761707, -8.731197, -10.558658, -9.4418745, -10.761707, -12)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, -9.226672, -12, -9.226673)
+2:0/0/physics_layer_0/polygon_0/one_way = true
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, 8.093643, 8.633221, -12, 12, -7.913783, -9.532511, 12)
 3:1/0 = 0
@@ -232,7 +234,7 @@ sources/2 = SubResource("TileSetAtlasSource_2ba50")
 position = Vector2(141, -178)
 
 [node name="Waddledee" parent="." unique_id=1848298276 instance=ExtResource("3_aqnxt")]
-position = Vector2(29, -182)
+position = Vector2(29, -178)
 
 [node name="TileMapLayers" type="Node2D" parent="." unique_id=254693309]
 texture_filter = 1

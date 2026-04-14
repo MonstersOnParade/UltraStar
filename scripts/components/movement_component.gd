@@ -5,11 +5,12 @@ class_name MovementComponent extends Node
 # Default Configuration for Kirby
 @export var max_sprinting_speed: float = 11000
 @export var max_walking_speed: float = 7000
-@export var walk_acceleration: float = 24000
-@export var sprint_accelerations: float = 36000
+@export var walk_acceleration: float = 40000
+@export var sprint_accelerations: float = 60000
 @export var friction: float = 30000.0
 @export var gravity: float = 10000
 @export var float_gravity: float = 5000
+@export var water_gravity: float = 4000
 
 #probably only useful for debug
 @export var instantMaxSpeed: bool =false
@@ -47,6 +48,18 @@ var is_floating: bool = false
 @export var sprint_timer: float = 0.0
 var is_sprinting: bool = false
 var wants_sprint: bool = false
+#only used to prevent sprinting if full
+var is_full: bool = false
+
+#ducking/sliding related
+var is_ducking: bool = false
+var is_sliding: bool = false
+@export var slide_timer: float = 0.0
+
+#swimming/water related
+var is_swimming: bool = false
+@export var swim_acceleration: float = 30000
+@export var max_swimming_speed: float = 5000
 
 #determines which direction the character is currently moving, if it is moving
 var velocity: Vector2 = Vector2.ZERO
@@ -58,7 +71,8 @@ func tick(delta:float) -> void:
 	update_timers(delta)
 	
 	if wants_sprint:
-		try_sprint(delta)
+		if not is_full:
+			try_sprint(delta)
 	
 	#apply gravity 
 	apply_gravity(delta)
@@ -87,6 +101,8 @@ func apply_gravity(delta: float) -> void:
 	if not characterBody.is_on_floor():
 		if is_floating:
 			velocity.y += delta * float_gravity
+		elif is_swimming:
+			velocity.y += delta * water_gravity
 		elif not is_floating:
 			if is_holding_jump:
 				#does not apply gravity if the jump button is held and the timer is not yet below 0
@@ -97,10 +113,12 @@ func apply_gravity(delta: float) -> void:
 			else:
 				jumping_timer = 0
 				velocity.y += delta * gravity
+		
 
 func try_sprint(delta: float) -> void:
-	if can_sprint():
-		start_sprinting(delta)
+	if not is_swimming:
+		if can_sprint():
+			start_sprinting(delta)
 	else:
 		is_sprinting = false
 
@@ -114,7 +132,7 @@ func can_sprint() -> bool:
 	#essentially the default case
 	return false
 
-func start_sprinting(delta: float) -> void:
+func start_sprinting(_delta: float) -> void:
 	is_sprinting = true
 
 #checks if a jump can occur, then does it if can
@@ -135,11 +153,11 @@ func can_jump() -> bool:
 		return false
 
 #applies the jump force to the y velocity
-func perform_jump(delta:float) -> void:
+func perform_jump(_delta:float) -> void:
 	velocity.y = jump_force
 	jumping_timer = jump_length
 
-func perform_float(delta:float) -> void:
+func perform_float(_delta:float) -> void:
 	is_floating = true
 	velocity.y = float_force
 
